@@ -1,5 +1,6 @@
 package com.yildiz.hrms.business.abstracts;
 
+import java.io.File;
 import java.util.List;
 
 import com.yildiz.hrms.core.utilities.result.DataResult;
@@ -10,4 +11,5 @@ public interface ResumeService {
 
 	Result add(Resume resume);
 	DataResult<List<Resume>> getAll();
+	Result uploadImage(int id, File file);
 }

@@ -3,6 +3,7 @@ package com.yildiz.hrms.business.concretes;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.yildiz.hrms.business.abstracts.ResumeEducationService;
@@ -35,6 +36,13 @@ public class ResumeEducationManager implements ResumeEducationService {
 	@Override
 	public DataResult<List<ResumeEducation>> getAll() {
 		return new SuccessDataResult<List<ResumeEducation>>(ValidationMessages.RESUME_EDUCATION_GET_ALL_LIST,this.resumeEducationDao.findAll());
+	}
+
+	@Override
+	public DataResult<List<ResumeEducation>> getAllSort(Sort.Direction sort, String column) {
+		Sort sorts = Sort.by(sort,column);
+		return new SuccessDataResult<List<ResumeEducation>>(ValidationMessages.RESUME_EDUCATION_GET_ALL_LIST,this.resumeEducationDao.findAll(sorts));
+
 	}
 
 
